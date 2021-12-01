@@ -4,15 +4,19 @@ import ContactCard from "./ContactCard";
 
 function ContactList() {
   const [contacts, setContacts] = useState(contactsJSON.slice(0, 5));
+  const [remainingContacts, setRemainingContacts] = useState(
+    contactsJSON.slice(5)
+  );
 
   const addRandomCeleb = () => {
-    const remainingContacts = contactsJSON.slice(5);
     const updatedRemainingContacts = [...remainingContacts];
 
     let randomIndex = Math.floor(Math.random() * remainingContacts.length);
     let moveCeleb = updatedRemainingContacts.splice(randomIndex, 1);
     //console.log("moveCeleb", moveCeleb);
     const updatedContacts = [...contacts, moveCeleb[0]];
+
+    setRemainingContacts(updatedRemainingContacts);
     setContacts(updatedContacts);
     //console.log("after push", contacts);
   };
