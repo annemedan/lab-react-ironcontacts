@@ -1,5 +1,6 @@
 import { useState } from "react";
 import contactsJSON from "./../contacts.json";
+import ContactCard from "./ContactCard";
 
 function ContactList() {
   const [contacts, setContacts] = useState(contactsJSON.slice(0, 5));
@@ -63,22 +64,12 @@ function ContactList() {
         </tr>
         {contacts.map((celebrity) => {
           return (
-            <tr key={celebrity.id}>
-              <td>
-                <img src={celebrity.pictureUrl} />
-              </td>
-              <td> {celebrity.name} </td>
-              <td> {Math.round(celebrity.popularity * 100) / 100} </td>
-              <td> {celebrity.wonOscar ? " 🏆 " : null} </td>
-              <td> {celebrity.wonEmmy ? " 🏆 " : null} </td>
-              <td>
-                <button onClick={() => deleteCeleb(celebrity.id)}>
-                  Delete
-                </button>
-              </td>
-            </tr>
+            <ContactCard
+              celebrityObj={celebrity}
+              deleteCelebFunction={deleteCeleb}
+            />
           );
-        })}{" "}
+        })}
       </table>
     </div>
   );
