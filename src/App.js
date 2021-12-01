@@ -6,9 +6,9 @@ function App() {
   const [contacts, setContacts] = useState(contactsJSON.slice(0, 5));
 
   const addRandomCeleb = () => {
-    let newArr = contactsJSON.slice(5);
-    const randomIndex = Math.floor(Math.random() * newArr.length);
-    const moveCeleb = newArr.splice(randomIndex, 1);
+    let remainingContacts = contactsJSON.slice(5);
+    const randomIndex = Math.floor(Math.random() * remainingContacts.length);
+    const moveCeleb = remainingContacts.splice(randomIndex, 1);
     //console.log("moveCeleb", moveCeleb);
     const updatedContacts = [...contacts, moveCeleb[0]];
     setContacts(updatedContacts);
