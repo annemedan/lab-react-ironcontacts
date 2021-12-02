@@ -12,8 +12,14 @@ function ContactList() {
     const updatedRemainingContacts = [...remainingContacts];
 
     let randomIndex = Math.floor(Math.random() * remainingContacts.length);
-    let moveCeleb = updatedRemainingContacts.splice(randomIndex, 1);
+    let moveCeleb;
+    if (updatedRemainingContacts.length !== 0) {
+      moveCeleb = updatedRemainingContacts.splice(randomIndex, 1);
+    } else {
+      return;
+    }
     //console.log("moveCeleb", moveCeleb);
+
     const updatedContacts = [...contacts, moveCeleb[0]];
 
     setRemainingContacts(updatedRemainingContacts);
